@@ -1,0 +1,17 @@
+
+Forma Canônica
+Max Z = 10.0X1+ 16.0X2
+Sujeito a:
+-1.0X1+ -2.0X2 <=  -40.0
+-2.0X1+ -5.0X2 <=  -50.0
+Tal que:
+X1 , X2 >= 0
+
+
+Forma Dual
+Min D = -40.0Y1+ -50.0Y2
+Sujeito a:
+-1.0Y1+ -2.0Y2 >= 10.0
+-2.0Y1+ -5.0Y2 >= 16.0
+Tal que:
+Y1 , Y2 >= 0

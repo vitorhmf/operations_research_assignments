@@ -1,0 +1,18 @@
+
+Forma Canônica
+Max Z = 23.0X1+ 32.0X2
+Sujeito a:
+10.0X1+ 6.0X2 <= 2500.0
+5.0X1+ 10.0X2 <= 2000.0
+1.0X1+ 2.0X2 <= 500.0
+Tal que:
+X1 , X2 , X3 >= 0
+
+
+Forma Dual
+Min D = 2500.0Y1+ 2000.0Y2+ 500.0Y3
+Sujeito a:
+10.0Y1+ 5.0Y2+ 1.0Y3 >=  23.0
+6.0Y1+ 10.0Y2+ 2.0Y3 >=  32.0
+Tal que:
+Y1 , Y2 , Y3 >= 0

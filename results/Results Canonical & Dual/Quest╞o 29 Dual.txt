@@ -1,0 +1,18 @@
+
+Forma Canônica
+Max -Z = -4.0X1+ -5.0X2
+Sujeito a:
+-0.3X1+ -0.1X2 <= 2.7
+0.5X1+ 0.5X2 = 6.0
+-0.6X1+ -0.4X2 <=  -6.0
+Tal que:
+X1 , X2 , X3 >= 0
+
+
+Forma Dual
+Max D = -2.7Y1+ 6.0Y2+ 6.0Y3
+Sujeito a:
+-0.3Y1+ 0.5Y2+ -0.6Y3 <=  4.0
+-0.1Y1+ 0.5Y2+ -0.4Y3 <=  5.0
+Tal que:
+Y1 , Y2 , Y3 >= 0
