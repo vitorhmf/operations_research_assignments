@@ -16,12 +16,14 @@ For this assignment, from a set of 14 questions, the group was required to selec
 Our group chose the following questions:
 
 - **Question 2:** Implement the graphical solution method for a linear programming problem with two decision variables and m constraints.
+   - Click [here](https://heitorvitorppcaquestao2.bsite.net/) to see the application. 
 
 - **Question 3:** Develop a function that transforms any linear programming problem (with n decision variables and m constraints) into canonical form (maximizing Z; all constraints in ≤ form; all decision variables ≥ 0).
 
 - **Question 4:** Implement the primal Simplex algorithm for a linear programming problem with n decision variables and m constraints.
 
 - **Question 5:** Implement the Branch and Bound method for a linear programming problem with n decision variables ∈ Z and m constraints.
+  - Click [here](https://heitorvitorppcaquestao5.bsite.net/) to see the application.
 
 For the resolution of the above questions, we utilized Python, C#, and HTML programming languages. Please access each question's folder for more details.
 
