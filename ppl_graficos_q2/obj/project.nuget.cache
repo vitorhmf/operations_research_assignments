@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "j1O6O2z72mPceCBVCLFJXx4SDVg7jBBC40Dzd4/BnTTv6dLwLqh4qQPhTgmh6DB/hR13NQO/GjVBCi7Ox1QbeQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\gomes\\Documents\\Downloads\\Mestrado\\Questão2\\Questão2.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\gomes\\.nuget\\packages\\google.ortools\\9.8.3296\\google.ortools.9.8.3296.nupkg.sha512",
+    "C:\\Users\\gomes\\.nuget\\packages\\google.ortools.runtime.linux-arm64\\9.8.3296\\google.ortools.runtime.linux-arm64.9.8.3296.nupkg.sha512",
+    "C:\\Users\\gomes\\.nuget\\packages\\google.ortools.runtime.linux-x64\\9.8.3296\\google.ortools.runtime.linux-x64.9.8.3296.nupkg.sha512",
+    "C:\\Users\\gomes\\.nuget\\packages\\google.ortools.runtime.osx-arm64\\9.8.3296\\google.ortools.runtime.osx-arm64.9.8.3296.nupkg.sha512",
+    "C:\\Users\\gomes\\.nuget\\packages\\google.ortools.runtime.osx-x64\\9.8.3296\\google.ortools.runtime.osx-x64.9.8.3296.nupkg.sha512",
+    "C:\\Users\\gomes\\.nuget\\packages\\google.ortools.runtime.win-x64\\9.8.3296\\google.ortools.runtime.win-x64.9.8.3296.nupkg.sha512",
+    "C:\\Users\\gomes\\.nuget\\packages\\google.protobuf\\3.25.0\\google.protobuf.3.25.0.nupkg.sha512",
+    "C:\\Users\\gomes\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

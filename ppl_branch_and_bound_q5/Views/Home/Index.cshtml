@@ -1,0 +1,110 @@
+﻿@model Grafico
+@{
+    ViewData["Title"] = "Home Page";
+    var restricao = ViewData["restricao"];
+    var nvariables = ViewData["nvariables"];
+    int loop =  Convert.ToInt32(restricao);
+    int loop2 =  Convert.ToInt32(nvariables);
+}
+<style>
+    input.teste{
+        width: 200px;
+    }
+    #inline form{
+        display:inline-block;}
+    
+
+    label {
+        font-size: 22px;
+    }
+    input[type=text]{
+        margin-left: 10px;
+        margin-right: 10px;
+        color: #DC4C64;
+    }
+    input:focus {
+    outline: none !important;
+    border:1px solid #DC4C64;
+    box-shadow: 0 0 10px #DC4C64;
+  }
+
+  select{
+    background: #DC4C64;
+  color: #fff;
+  width: 80px;
+  }
+  select option {
+  margin: 40px;
+  background: #DC4C64;
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+</style>
+<br>
+<center><h1 class="text-danger">Branch-Bound</h1></center>
+<br>
+
+
+    <center>
+    
+      
+   @using (Html.BeginForm("Restricao","", FormMethod.Post )){
+    
+        
+       
+        <label class="text-danger" >Números de variáveis:</label>
+       
+        <input  name="nvariables" type="text"  id="email" value="@nvariables" />
+     
+       
+  
+    <label class="text-danger" >Restrições totais:</label>
+    <input type="text" name="restricao" type="text" value="@restricao" />
+   
+  
+    <input type="submit" class="btn btn-danger" value="Enviar" />
+   
+    }
+
+</center>
+
+<br><br>
+<div class="text-center">
+    
+   @using (Html.BeginForm("Equacoes", "", FormMethod.Post)){
+    <select asp-for="option">
+        <option value="Max">Max</option>
+        <option value="Mix">Min</option>
+    </select>
+    <label>Z=</label>
+    for(int i =0;i<(loop2);i++){
+        var j = i+1;
+    <input type="text" name="variable[@i].X1" /> <label>x @j</label>
+    }
+    <br>
+    <br>
+    <label class="text-danger">Sujeito a restrições</label>
+   
+    <br>
+    
+    
+        for(int i =0;i<(loop);i++){
+            <br>
+    <br>
+        for(int j=0;j<(loop2);j++){
+    <input type="text" name="Restricoes[@i].variables[@j].X1" /> <label>x @j</label>
+
+    }
+    <select name="Restricoes[@i].Sinal">
+        <option value=">="> &ge; </option>
+        <option value="<="> &le;  </option>
+        <option value="="> = </option>
+    </select>
+    <input type="text" name="Restricoes[@i].Resultado" />
+    
+        
+    }
+    <br><br>
+    <input type="submit" class="btn btn-danger teste" value="Enviar" />
+    }
+</div>

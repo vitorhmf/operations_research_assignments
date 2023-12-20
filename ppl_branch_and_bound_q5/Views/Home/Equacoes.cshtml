@@ -1,0 +1,82 @@
+﻿@{
+
+    
+    ViewData["Title"] = "Privacy Policy";
+
+   var desmos = ViewData["Desmos"];
+   
+   var pontosX =" ";
+   var pontosY = " ";
+   var objetive ="";
+   int cont=1;
+   var equation = "";
+   int d=1;
+   int hu=1;
+}
+<style>
+
+ h4,h5 {
+    color: #DC4C64;
+ }
+</style>
+
+@model Grafico
+
+<center>
+
+<h4>@ViewData["Equacao"]</h4>
+@foreach(var i in Model.Restricoes){
+    equation = "";
+    d=1;
+    foreach(var j in i.variables){
+        if(d==1){
+        equation += j.X1+"X"+Convert.ToString(d);}
+        else{
+            equation += " + "+j.X1+"X"+Convert.ToString(d);
+        }
+        d++;
+    }
+    <h4>@equation @i.Sinal @i.Resultado</h4>
+}
+
+@{equation="";}
+@foreach(var i in Model.variable){
+    
+   
+    if(hu==1){
+    equation += "X"+Convert.ToString(hu);
+    }
+    else{
+        equation += ","+"X"+Convert.ToString(hu);
+    }
+    hu++;
+    
+}
+<h4>Tal que @equation >=0</h4>
+</center>
+
+<br>
+<center>
+
+<h4>Solução:</h4>
+
+<h4>Resposta Final:</h4>
+@{
+    int cont2=0;
+    if(@ViewData["erro"]=="O problema não tem uma solução ótima!"){
+    <h5>@ViewData["erro"]</h5>}
+    else{
+        <h5>Solução ótima: @ViewData["final"]</h5>
+        
+        foreach(var k in @ViewData["array"] as double[]){
+            <h5>X[@cont2] = @k</h5>
+            cont2++;
+        }
+        <h5>Tempo para encontrar:  @ViewData["Time"] milliseconds</h5>
+        <h5>Números de Branch and Bround: @ViewData["Numerobranchandbounds"]</h5>
+        <h5>Números de Interações: @ViewData["interation"]</h5>
+    }
+    }
+
+</center>
+

@@ -1,0 +1,414 @@
+﻿@{
+
+    
+    ViewData["Title"] = "Privacy Policy";
+
+   var desmos = ViewData["Desmos"];
+   
+   var pontosX =" ";
+   var pontosY = " ";
+}
+<style>
+    h4,h5 {
+        color: #DC4C64;
+    }
+
+    .teste{
+        width: 200px;
+
+    }
+</style>
+<center><h4>@ViewData["Equacao"]</h4></center>
+@model Grafico
+
+<center>
+<h4>Sujeito</h4>
+@foreach(var k in Model.Restricoes){
+    
+    <h4>@k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado</h4>
+}
+<h4>Tal que x1,x2≥0;</h4>
+</center>
+
+<br>
+<center>
+
+<h4>Solução:</h4>
+<input id="Desmos" value="@desmos" type="hidden"></input>
+    @foreach(var k in Model.Restricoes){
+    
+    if(Convert.ToDouble(@k.X1res)!=0.0 &&  Convert.ToDouble(@k.X2res)!=0.0){
+    <h5>Para desenhar restrições: @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado</h5>
+    <h5>Trate isso como: @k.X1res X1 + @k.X2res  X2 = @k.Resultado</h5>
+    <h5>Quando x1=0 e x2=?</h5>
+    var x2 = @k.X2res+ "x2";
+    var x1 = @k.X1res+"(0)";
+    <h5>⇒@x1+@x2 = @k.Resultado</h5>
+    <h5>⇒@x2 = @k.Resultado</h5>
+    var resultado =  Convert.ToDouble(@k.Resultado)/Convert.ToDouble(@k.X2res);
+    <h5>⇒x2 = @resultado</h5>
+    <br>
+     <h5>Quando x2=0 e x1=?</h5>
+     x2 = @k.X2res+ "(0)";
+     x1 = @k.X1res+"x1";
+    <h5>⇒@x1+@x2 = @k.Resultado</h5>
+    <h5>⇒@x1 = @k.Resultado</h5>
+    var resultado2 =  Convert.ToDouble(@k.Resultado)/Convert.ToDouble(@k.X1res);
+    <h5>⇒x1 = @resultado2</h5>
+        <br>
+        <table class="table teste">
+
+            <thead>
+                <tr class="table-dark">
+                    <td>X1</td>
+                    <td>X2</td>
+                </tr>
+            <thead>
+                <tbody>
+                    <tr>
+                        <td>
+                         0
+                        </td>
+                        <td>
+                        @resultado
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                         @resultado2
+                        </td>
+                        <td>
+                         0
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    <br>
+    string mensagem = "falso";
+
+    if(String.Compare(@k.Sinal,">=")==0){
+        if((0+0)>= Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";
+        pontosX += " 0 ";
+        pontosX += " , " + Convert.ToString(@resultado2);
+        pontosY+= Convert.ToString(@resultado);
+        pontosY+= ", 0 ";
+        }
+
+    }
+    else if(String.Compare(@k.Sinal,"<=")==0){
+        if((0+0)<= Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";
+        pontosX += " 0 ";
+        pontosX += " , " + Convert.ToString(@resultado2);
+        pontosY+= Convert.ToString(@resultado);
+        pontosY+= ", 0 ";
+        }
+
+    }
+    else if(String.Compare(@k.Sinal,"=")==0){
+        if((0+0)== Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";
+        pontosX += " 0 ";
+        pontosX += " , " + Convert.ToString(@resultado2);
+        pontosY+= Convert.ToString(@resultado);
+        pontosY+= ", 0 ";
+        }
+
+    }
+
+
+    <h5>Colocarx1=0,x2=0(origem) em  @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado, então 0+0 @k.Sinal @k.Resultado, o que é @mensagem,
+
+o semiplano que contém a origem é a região do conjunto solução da inequação @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado</h5>
+    }
+
+    else if(Convert.ToDouble(@k.X1res)==0 && Convert.ToDouble(@k.X2res)!=0  ){
+    <h5>Para desenhar restrições: @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado</h5>
+    <h5>Trate isso como: @k.X1res X1 + @k.X2res  X2 = @k.Resultado</h5>
+    <h5>Quando x1=0 e x2=?</h5>
+    var x2 = @k.X2res+ "x2";
+    var x1 = @k.X1res+"(0)";
+    <h5>⇒@x1+@x2 = @k.Resultado</h5>
+    <h5>⇒@x2 = @k.Resultado</h5>
+    var resultado =  Convert.ToDouble(@k.Resultado)/Convert.ToDouble(@k.X2res);
+    <h5>⇒x2 = @resultado</h5>
+    <br>
+
+    <table class="table teste">
+
+            <thead>
+                <tr class="table-dark">
+                    <td>X1</td>
+                    <td>X2</td>
+                </tr>
+            <thead>
+                <tbody>
+                    <tr>
+                        <td>
+                         0
+                        </td>
+                        <td>
+                        @resultado
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                       1
+                        </td>
+                        <td>
+                         @resultado
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    <br>
+    string mensagem = "falso";
+    
+    if(String.Compare(@k.Sinal,">=")==0){
+        if((0+0)>= Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";
+        pontosY += ", " + Convert.ToString(@resultado);
+        pontosY += ", " + Convert.ToString(@resultado);
+        pontosX+= ", 0 ";
+        pontosX+= ", 1 ";
+         
+        }
+
+    }
+    else if(String.Compare(@k.Sinal,"<=")==0){
+        if((0+0)<= Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";
+        mensagem = "verdade";
+        pontosY += ", " + Convert.ToString(@resultado);
+        pontosY += ", " + Convert.ToString(@resultado);
+        pontosX+= ", 0 ";
+        pontosX+= ", 1 ";
+        }
+
+    }
+    else if(String.Compare(@k.Sinal,"=")==0){
+        if((0+0)== Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";
+        mensagem = "verdade";
+        pontosY += ", " + Convert.ToString(@resultado);
+        pontosY += ", " + Convert.ToString(@resultado);
+        pontosX+= ", 0 ";
+        pontosX+= ", 1 ";
+        }
+
+    }
+
+
+    <h5>Colocarx1=0,x2=0(origem) em  @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado, então 0+0 @k.Sinal @k.Resultado, o que é @mensagem,
+
+o semiplano que contém a origem é a região do conjunto solução da inequação @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado</h5>
+
+
+    }
+
+    else if(Convert.ToDouble(@k.X2res)==0 && Convert.ToDouble(@k.X1res)!=0  ){
+    <h5>Para desenhar restrições: @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado</h5>
+    <h5>Trate isso como: @k.X1res X1 + @k.X2res  X2 = @k.Resultado</h5>
+    <h5>Quando x2=0 e x1=?</h5>
+     var x2 = @k.X2res+ "(0)";
+     var x1 = @k.X1res+"x1";
+    <h5>⇒@x1+@x2 = @k.Resultado</h5>
+    <h5>⇒@x1 = @k.Resultado</h5>
+    var resultado2 =  Convert.ToDouble(@k.Resultado)/Convert.ToDouble(@k.X1res);
+    <h5>⇒x1 = @resultado2</h5> 
+    <br>
+
+    <table class="table teste">
+
+            <thead>
+                <tr class="table-dark">
+                    <td>X1</td>
+                    <td>X2</td>
+                </tr>
+            <thead>
+                <tbody>
+                    <tr>
+                        <td>
+                          @resultado2
+                        </td>
+                        <td>
+                        0
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                         @resultado2
+                        </td>
+                        <td>
+                         1
+                        </td>
+                    </tr>
+                </tbody>
+        </table>
+    <br>
+    string mensagem = "falso";
+    
+    if(String.Compare(@k.Sinal,">=")==0){
+        if((0+0)>= Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";  
+        pontosY += ", 1 ";
+        pontosY += ", 0 ";
+        pontosX += ", " + Convert.ToString(@resultado2);
+        pontosX += ", " + Convert.ToString(@resultado2);
+        
+        }
+
+    }
+    else if(String.Compare(@k.Sinal,"<=")==0){
+        if((0+0)<= Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";
+        pontosY += ", 1";
+        pontosY += ", 0 ";
+        pontosX += ", " + Convert.ToString(@resultado2);
+        pontosX += ", " + Convert.ToString(@resultado2);
+        }
+
+    }
+    else if(String.Compare(@k.Sinal,"=")==0){
+        if((0+0)== Convert.ToInt32(@k.Resultado)){
+        mensagem = "verdade";
+        pontosY += ", 1 ";
+        pontosY += ", 0 ";
+        pontosX+= ", " + Convert.ToString(@resultado2);
+        pontosX+= ", " + Convert.ToString(@resultado2);
+        }
+
+    }
+
+
+    <h5>Colocarx1=0,x2=0(origem) em  @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado, então 0+0 @k.Sinal @k.Resultado, o que é @mensagem,
+
+o semiplano que contém a origem é a região do conjunto solução da inequação @k.X1res X1 + @k.X2res  X2 @k.Sinal @k.Resultado</h5>
+
+     
+
+    }
+
+
+
+}
+
+
+
+<input type="hidden" id="pontosx" value="@pontosX" />
+<input type="hidden" id="pontosy" value="@pontosY" />
+@{
+    Console.WriteLine(pontosX);
+}
+<br><br>
+<div id="calculator" style="width: 600px; height: 400px;"></div>
+<br><br>
+<h4>Resposta Final:</h4>
+@{
+    if(@ViewData["erro"]=="O problema não tem uma solução ótima!"){
+    <h5>@ViewData["erro"]</h5>}
+    else{
+        <h5>Solução Ótima: @ViewData["final"]</h5>
+        <h5>Coordenada X no valor Ótimo: @ViewData["Otimox"]</h5>
+        <h5>Coordenada Y no valor Ótimo @ViewData["Otimoy"]</h5>
+    }
+    }
+
+</center>
+
+
+
+<script src="https://www.desmos.com/api/v1.8/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+<script>
+  var elt = document.getElementById('calculator');
+  var calculator = Desmos.GraphingCalculator(elt);
+  var desmos =document.getElementById('Desmos');
+  var pontosx = document.getElementById('pontosx');
+  var ponto =  pontosx.value;
+  var pontosxArray = ponto.split(',');
+  var pontosy =document.getElementById('pontosy').value;
+  var pontosyArray =  pontosy.split(",");
+  const x = desmos.value;
+  const myArr = JSON.parse(x);
+  
+  
+
+ 
+  for(var i =0; i< myArr.length;i++){
+
+    calculator.setExpression({id: myArr[i].id, latex: myArr[i].latex });
+  
+  }
+
+  var minX = parseInt(pontosxArray[0],10);
+  var maxX = parseInt(pontosxArray[0],10);
+  for(var i =0; i< pontosxArray.length;i++){
+
+    if(minX > parseInt(pontosxArray[i],10)){
+        minX = parseInt(pontosxArray[i],10);
+    }
+
+    if(maxX < parseInt(pontosxArray[i],10)){
+        maxX = parseInt(pontosxArray[i],10);
+    }
+    
+  
+  }
+  
+ 
+  var miny = parseInt(pontosyArray[0],10);
+  var maxy = parseInt(pontosyArray[0],10);
+  for(var i =0; i< pontosyArray.length;i++){
+
+    if(miny > parseInt(pontosyArray[i],10)){
+        miny = parseInt(pontosyArray[i],10);
+    }
+
+    if(maxy < parseInt(pontosyArray[i],10)){
+        maxy = parseInt(pontosyArray[i],10);
+    }
+    
+  
+  }
+
+  
+
+var left;
+var right;
+var top;
+var bottom;
+
+if(minX  > 0 && maxX > 0){
+    right = minX-10;
+    left = 0;
+}
+
+else if(minX < 0 && maxX >0){
+
+    left= (-1)*minX;
+    right = maxX;
+
+}
+
+else if(minX <= 0 && maxX <= 0){
+
+    left = (-1)*minX;   
+    right = 0;
+}
+
+
+calculator.setMathBounds({
+  left: minX -10,
+  right: maxX + 10,
+  bottom: miny -10,
+  top: maxy + 10
+});
+  
+ 
+  
+  
+
+
+ 
+</script>
